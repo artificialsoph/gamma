@@ -2,7 +2,7 @@
 name: "Gamma Autogen"
 description: "Generate using Gamma CLI on push"
 inputs:
-  ssh-key:
+  ssh_key:
     description: "SSH Key for secret repos"
     required: false
     default: "foo"
