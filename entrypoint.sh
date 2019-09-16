@@ -9,7 +9,7 @@ export GITHUB_USER="$INPUT_USERNAME"
 export GITHUB_PASSWORD="$INPUT_PASSWORD"
 export GITHUB_TOKEN="$INPUT_TOKEN"
 
-git clone "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" instructor_repo
+git clone --depth 1 "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" instructor_repo
 
 cd instructor_repo
 
