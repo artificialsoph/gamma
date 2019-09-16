@@ -5,9 +5,9 @@ mkdir -p ~/.ssh && echo -e "${INPUT_SSH_KEY//_/\\n}" >~/.ssh/id_rsa && chmod og-
 
 ssh -T git@github.com
 
-# cat ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa
 
-# conda activate base
+conda activate base
 
 # python copy_ssh.py
 
