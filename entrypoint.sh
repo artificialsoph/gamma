@@ -7,7 +7,16 @@ export GITHUB_USER="$INPUT_USERNAME"
 export GITHUB_PASSWORD="$INPUT_PASSWORD"
 export GITHUB_TOKEN="$INPUT_TOKEN"
 
-git clone "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+git clone "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" instructor_repo
+
+cd instructor_repo
+
+git config -f .gitmodules submodule.out.url "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/${GITHUB_REPOSITORY/_instructor/}.git"
+
+conda activate base
+
+gamma generate
+gamma deploy
 
 # set -e
 
@@ -41,10 +50,3 @@ git clone "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
 # ssh -T git@github.com
 
 # cat ~/.ssh/id_rsa
-
-# conda activate base
-
-# git clone git@github.com:$GITHUB_REPOSITORY.git instructor_repo
-# cd instructor_repo
-# gamma generate
-# gamma deploy
