@@ -1,21 +1,39 @@
 #!/bin/bash -lx
+
+set -e
+
 mkdir -p ~/.ssh
 echo -e "${INPUT_SSH_KEY//_/\\n}" >~/.ssh/id_rsa
 chmod og-rwx ~/.ssh/id_rsa
 
+ssh-add ~/.ssh/id_rsa
 ssh-keyscan -H github.com >>~/.ssh/known_hosts
-# echo "$INPUT_SSH_KEY" >~/.ssh/id_rsa
-# chmod 600 ~/.ssh/id_rsa
+
+# SSH_PATH="$HOME/.ssh"
+
+# mkdir -p "$SSH_PATH"
+# touch "$SSH_PATH/known_hosts"
+
+# echo "$PRIVATE_KEY" >"$SSH_PATH/deploy_key"
+
+# chmod 700 "$SSH_PATH"
+# chmod 600 "$SSH_PATH/known_hosts"
+# chmod 600 "$SSH_PATH/deploy_key"
+
+# eval $(ssh-agent)
+# ssh-add "$SSH_PATH/deploy_key"
+
+# ssh-keyscan -t rsa $HOST >>"$SSH_PATH/known_hosts"
+
+# ssh -o StrictHostKeyChecking=no -A -tt -p ${PORT:-22} $USER@$HOST "$*"
+
+export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A -tt -p ${PORT:-22}'
 
 ssh -T git@github.com
 
 cat ~/.ssh/id_rsa
 
 conda activate base
-
-# python copy_ssh.py
-
-# cat ~/.ssh/id_rsa
 
 git clone git@github.com:$GITHUB_REPOSITORY.git instructor_repo
 cd instructor_repo
