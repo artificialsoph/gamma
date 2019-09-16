@@ -1,13 +1,21 @@
 #!/bin/bash -lx
 
-set -e
+git config --global hub.protocol https
 
-mkdir -p ~/.ssh
-echo -e "${INPUT_SSH_KEY//_/\\n}" >~/.ssh/id_rsa
-chmod og-rwx ~/.ssh/id_rsa
+export GITHUB_USER=$INPUT_USERNAME
+export GITHUB_PASSWORD=$INPUT_PASSWORD
+export GITHUB_TOKEN=$INPUT_TOKEN
 
-ssh-add ~/.ssh/id_rsa
-ssh-keyscan -H github.com >>~/.ssh/known_hosts
+hub clone $GITHUB_REPOSITORY --recursive
+
+# set -e
+
+# mkdir -p ~/.ssh
+# echo -e "${INPUT_SSH_KEY//_/\\n}" >~/.ssh/id_rsa
+# chmod og-rwx ~/.ssh/id_rsa
+
+# ssh-add ~/.ssh/id_rsa
+# ssh-keyscan -H github.com >>~/.ssh/known_hosts
 
 # SSH_PATH="$HOME/.ssh"
 
@@ -27,15 +35,15 @@ ssh-keyscan -H github.com >>~/.ssh/known_hosts
 
 # ssh -o StrictHostKeyChecking=no -A -tt -p ${PORT:-22} $USER@$HOST "$*"
 
-export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A -tt -p ${PORT:-22}'
+# export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A -tt -p ${PORT:-22}'
 
-ssh -T git@github.com
+# ssh -T git@github.com
 
-cat ~/.ssh/id_rsa
+# cat ~/.ssh/id_rsa
 
-conda activate base
+# conda activate base
 
-git clone git@github.com:$GITHUB_REPOSITORY.git instructor_repo
-cd instructor_repo
-gamma generate
-gamma deploy
+# git clone git@github.com:$GITHUB_REPOSITORY.git instructor_repo
+# cd instructor_repo
+# gamma generate
+# gamma deploy
