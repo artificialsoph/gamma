@@ -12,6 +12,7 @@ COPY ssh_config /etc/ssh/ssh_config
 RUN git config --global user.email "metis-machine@nix.ai"
 RUN git config --global user.name "Metis Machine"
 
+RUN apt-get update; apt-get upgrade
 RUN apt-get install -y --force-yes hub
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
