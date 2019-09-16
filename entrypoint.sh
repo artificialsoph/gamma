@@ -1,6 +1,6 @@
 #!/bin/bash -lx
 
-hub --version
+# hub --version
 
 git config --global user.email "metis-machine@nix.ai"
 git config --global user.name "Metis Machine"
