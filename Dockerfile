@@ -12,8 +12,12 @@ COPY ssh_config /etc/ssh/ssh_config
 RUN git config --global user.email "metis-machine@nix.ai"
 RUN git config --global user.name "Metis Machine"
 
-RUN apt-get update; apt-get upgrade -y
-RUN apt-get install -y hub
+RUN apt-get update && apt-get install \
+    -y --no-install-recommends curl git
+
+COPY hub-linux-amd64-2.12.3.tgz /hub-linux-amd64-2.12.3.tgz
+RUN tar -zxf /hub-linux-amd64-2.12.3.tgz -C / && rm /hub-linux-amd64-2.12.3.tgz
+RUN /hub-linux-amd64-2.12.3/install
 
 # RUN git config --global hub.protocol https; export GITHUB_USER=$INPUT_USERNAME; export GITHUB_PASSWORD=$INPUT_PASSWORD; export GITHUB_TOKEN=$INPUT_TOKEN
 
