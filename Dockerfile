@@ -5,6 +5,7 @@ RUN pip install gamma -U --extra-index-url https://pypi.fury.io/artificialsoph/
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
+COPY copy_ssh.py /copy_ssh.py
 # RUN mkdir ~/.ssh
 COPY ssh_config /etc/ssh/ssh_config
 
