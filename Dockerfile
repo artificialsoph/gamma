@@ -3,11 +3,7 @@ FROM continuumio/miniconda3
 
 RUN pip install gamma -U --extra-index-url https://pypi.fury.io/artificialsoph/
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
-# COPY copy_ssh.py /copy_ssh.py
-# RUN mkdir ~/.ssh
-# COPY ssh_config /etc/ssh/ssh_config
 
 RUN git config --global user.email "metis-machine@nix.ai"; git config --global user.name "Metis Machine"
 
@@ -16,10 +12,4 @@ RUN wget https://github.com/github/hub/releases/download/v2.12.4/hub-linux-amd64
 RUN tar -zxf hub-linux-amd64-2.12.4.tgz -C / && rm hub-linux-amd64-2.12.4.tgz
 RUN /hub-linux-amd64-2.12.4/install
 
-# RUN cd hub
-# RUN make install prefix=/usr/local
-
-# RUN git config --global hub.protocol https; export GITHUB_USER=$INPUT_USERNAME; export GITHUB_PASSWORD=$INPUT_PASSWORD; export GITHUB_TOKEN=$INPUT_TOKEN
-
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
