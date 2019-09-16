@@ -1,10 +1,9 @@
 #!/bin/bash -lx
 
-git config --global hub.protocol https
-
-export GITHUB_USER=$INPUT_USERNAME
-export GITHUB_PASSWORD=$INPUT_PASSWORD
-export GITHUB_TOKEN=$INPUT_TOKEN
+# git config --global hub.protocol https
+# export GITHUB_USER=$INPUT_USERNAME
+# export GITHUB_PASSWORD=$INPUT_PASSWORD
+# export GITHUB_TOKEN=$INPUT_TOKEN
 
 hub clone $GITHUB_REPOSITORY --recursive
 

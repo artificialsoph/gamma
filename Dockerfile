@@ -12,8 +12,10 @@ COPY ssh_config /etc/ssh/ssh_config
 RUN git config --global user.email "metis-machine@nix.ai"
 RUN git config --global user.name "Metis Machine"
 
-RUN apt-get update; apt-get upgrade
-RUN apt-get install -y --force-yes hub
+RUN apt-get update; apt-get upgrade -y
+RUN apt-get install -y hub
+
+RUN git config --global hub.protocol https; export GITHUB_USER=$INPUT_USERNAME; export GITHUB_PASSWORD=$INPUT_PASSWORD; export GITHUB_TOKEN=$INPUT_TOKEN
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
