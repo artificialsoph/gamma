@@ -13,8 +13,8 @@ RUN git config --global user.email "metis-machine@nix.ai"; git config --global u
 
 RUN wget https://github.com/github/hub/releases/download/v2.12.4/hub-linux-amd64-2.12.4.tgz
 
-RUN tar -zxf hub-linux-arm64-2.12.4.tgz -C / && rm hub-linux-arm64-2.12.4.tgz
-RUN /hub-linux-arm64-2.12.4/install
+RUN tar -zxf hub-linux-amd64-2.12.4.tgz -C / && rm hub-linux-amd64-2.12.4.tgz
+RUN /hub-linux-amd64-2.12.4/install
 
 # RUN cd hub
 # RUN make install prefix=/usr/local
