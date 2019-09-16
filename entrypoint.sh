@@ -2,6 +2,8 @@
 
 hub --version
 
+git config --global user.email "metis-machine@nix.ai"
+git config --global user.name "Metis Machine"
 git config --global hub.protocol https
 export GITHUB_USER="$INPUT_USERNAME"
 export GITHUB_PASSWORD="$INPUT_PASSWORD"
