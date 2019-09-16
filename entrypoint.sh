@@ -1,4 +1,4 @@
-#!/bin/sh -lx
+#!/bin/bash -lx
 mkdir -p ~/.ssh && echo -e "${INPUT_SSH_KEY//_/\\n}" >~/.ssh/id_rsa && chmod og-rwx ~/.ssh/id_rsa
 # echo "$INPUT_SSH_KEY" >~/.ssh/id_rsa
 # chmod 600 ~/.ssh/id_rsa
