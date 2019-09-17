@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM continuumio/miniconda3
+FROM jupyter/scipy-notebook
 
 RUN pip install gamma -U --extra-index-url https://pypi.fury.io/artificialsoph/
 
