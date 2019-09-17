@@ -15,6 +15,8 @@ cd instructor_repo
 
 git config -f .gitmodules submodule.out.url "https://$GITHUB_USER:$GITHUB_TOKEN@github.com/${GITHUB_REPOSITORY/_instructor/}.git"
 
+git submodule update --init --depth 1 --recursive
+
 conda activate base
 
 gamma generate
