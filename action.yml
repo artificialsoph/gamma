@@ -8,4 +8,4 @@ inputs:
     default: "foo"
 runs:
   using: "docker"
-  image: sophsea/gamma:latest
+  image: "Dockerfile"
