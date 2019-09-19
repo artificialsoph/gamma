@@ -22,6 +22,9 @@ conda activate base
 gamma generate
 gamma deploy
 
+hub commit -am "Modified by Metis Machine at `date +'%F %T'`"
+hub push
+
 # set -e
 
 # mkdir -p ~/.ssh
