@@ -22,8 +22,8 @@ conda activate base
 gamma generate
 gamma deploy
 
-hub commit -am "Modified by Metis Machine at `date +'%F %T'`"
-hub push
+git commit -am "Modified by Metis Machine at `date +'%F %T'`"
+git push
 
 # set -e
 
