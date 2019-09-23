@@ -22,6 +22,9 @@ conda activate base
 gamma generate
 gamma deploy
 
+# remove token from git config!!
+git config -f .gitmodules submodule.out.url "https://git@github.com/${GITHUB_REPOSITORY/_instructor/}.git"
+
 git commit -am "Modified by Metis Machine at `date +'%F %T'`"
 git push
 
